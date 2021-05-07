@@ -111,13 +111,13 @@ body {
 }
 .main .tabs {
   display: flex;
-  font-size: 20px;
+  font-size: 19px;
 }
 .main .tabs .tab {
   background: #fff;
-  padding: 10px;
-  margin-right: 13px;
-  border-radius: 3px;
+  padding: 8px;
+  margin-left: 13px;
+  border-radius: 4px;
   border: 1px solid #e1e1e1;
 }
 .active-tabs {
@@ -125,6 +125,7 @@ body {
   color: white;
 }
 .main .tabs .tab:hover {
+ 
   cursor: pointer;
   background: #e1e1e1;
 }

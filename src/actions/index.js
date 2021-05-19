@@ -12,6 +12,8 @@ export const ADD_MOVIES = 'ADD_MOVIES';
 export const ADD_FAVOURITE = 'ADD_FAVOURITE'; 
 export const REMOVE_FAVOURITES = 'REMOVE_FAVOURITES';
 export const SET_SHOW_FAVOURITE = 'SET_SHOW_FAVOURITE';
+export const ADD_MOVIE_TO_LIST = 'ADD_MOVIE_TO_LIST'
+export const ADD_SEARCH_RESULT = 'ADD_SEARCH_RESULT'
 
 //action creators
 export function addMovie(movies) {
@@ -39,3 +41,35 @@ export function removeFavourite(movie) {
          val
      }
  }   
+ export function addMovieToList(movie) {
+     return {
+         type: ADD_MOVIE_TO_LIST,
+         movie
+     }
+ }
+//if u get an action simply pass it to the reducers and if you get function just call to to the with  dispatch as the argument
+
+ export function handleSearchMovie(movie) {
+     const url = `http://www.omdbapi.com/?apikey=3ca5df7&t=${movie}`;
+    console.log("movie", movie);
+     return function(dispatch) {
+        fetch(url)
+        .then(response => response.json())
+        .then(movie => {
+            console.log('movie data', movie);
+
+            //dispatch an action
+            dispatch(addSearchResult(movie))
+        })
+     }
+
+     
+ }
+
+ export function addSearchResult(movie) {
+     return {
+        type: ADD_SEARCH_RESULT, 
+        movie
+     }
+}
+ 

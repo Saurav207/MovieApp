@@ -49,13 +49,13 @@ export function removeFavourite(movie) {
  }
 //if u get an action simply pass it to the reducers and if you get function just call to to the with  dispatch as the argument
 
- export function handleSearchMovie(movie) {
-     const url = `http://www.omdbapi.com/?apikey=3ca5df7&t=${movie}`;
-    console.log("movie", movie);
+ export function handleSearchMovie(searchText) {
+     const url = `http://www.omdbapi.com/?apikey=3ca5df7&t=${searchText}`;
+    
      return function(dispatch) {
         fetch(url)
         .then(response => response.json())
-        .then(movie => {
+        .then((movie) => {
             console.log('movie data', movie);
 
             //dispatch an action

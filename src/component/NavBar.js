@@ -1,6 +1,8 @@
 import React from 'react';
 //import {data} from '../data';
+import { connect } from 'react-redux';
 import {addMovieToList, handleSearchMovie} from '../actions'
+
 
 
 
@@ -41,9 +43,7 @@ render() {
 
  
  const {result, showFavourite} = this.props.search;
- console.log("result", this.props.search.result)
- console.log("showResult", showFavourite);
- console.log("props", this.props)
+
   return (
     <div className="nav">
         <div className = "search-container">
@@ -68,6 +68,10 @@ render() {
   );
 }
 }
+function mapStateToProps({ search }) {
+  return {
+    search,
+  };
+}
 
-
-export default NavBar;
+export default connect(mapStateToProps)(NavBar);
